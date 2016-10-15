@@ -1,0 +1,28 @@
+<section data-ng-controller="FilesController" data-ng-init="toViewFile()">
+	<div class="page-header">
+		<h1 data-ng-bind="file.name"></h1>
+	</div>
+
+	<div class="col-md-12">
+
+		<form novalidate>
+			<formly-form model="file" fields="formFields">
+			</formly-form>
+		</form>
+
+		<hr/>
+		<div data-ng-show="((authentication.user) && (authentication.user._id == file.user._id))">
+			<a class="btn btn-success" href="/#!/files/{{file._id}}/edit">
+				<i class="glyphicon glyphicon-edit"></i> Edit
+			</a>
+			<a class="btn btn-danger" title="Remove" ng-really-message="Are you sure ?" ng-really-click="remove()" item="file">
+				<i class="glyphicon glyphicon-remove-circle"></i> Delete
+			</a>
+			<a class="btn btn-primary" href="/#!/files">
+				<i class="glyphicon glyphicon-list"></i> List Files
+			</a>
+		</div>
+
+	</div>
+
+</section>

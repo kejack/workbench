@@ -1,0 +1,46 @@
+<section data-ng-controller="EventsController">
+    <div class="page-header">
+        <h1>Events</h1>
+    </div>
+
+    <div class="pull-right">
+      <a type="button" class="btn btn-success" href="/#!/events/create">
+        <i class="glyphicon glyphicon-open"></i> New Event
+      </a>
+    </div>
+    <mwl-calendar
+            view="calendarView"
+            view-date="calendarDate"
+            events="events"
+            view-title="calendarTitle"
+            on-event-click="eventClicked(calendarEvent)"
+            on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+            edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+            delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+            on-edit-event-click="eventEdited(calendarEvent)"
+            on-delete-event-click="eventDeleted(calendarEvent)"
+            cell-is-open="true">
+    </mwl-calendar>
+    <div>
+        <table ng-table="tableParams" show-filter="true">
+            <tr ng-repeat="event in $data">
+                <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">{{event.name}}</td>
+                <td>
+                    <div class="table-actions">
+                <td>
+                   <div class="table-actions">
+                        <a class="btn btn-default" title="View" href="/#!/events/{{event._id}}">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                        <a class="btn btn-default" title="Edit" href="/#!/events/{{event._id}}/edit">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a class="btn btn-danger" title="Remove" ng-really-message="Are you sure ?" ng-really-click="remove(event)" item="event">
+                  				<span class="glyphicon glyphicon-remove-circle"></span>
+                  			</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>

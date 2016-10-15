@@ -1,0 +1,38 @@
+<section data-ng-controller="TasksController">
+    <div class="page-header">
+        <h1>Tasks</h1>
+    </div>
+
+    <div class="pull-right">
+      <a type="button" class="btn btn-success" href="/#!/tasks/create">
+        <i class="glyphicon glyphicon-open"></i> New Task
+      </a>
+    </div>
+
+    <div>
+        <table ng-table="tableParams" show-filter="true">
+            <tr ng-repeat="task in $data">
+                <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">{{task.name}}</td>
+                <td data-title="'Project'" sortable="'project'" >{{task.project.name}}</td>
+                <td data-title="'Category'" sortable="'category'" >{{task.category.name}}</td>
+                <td data-title="'Assignee'" sortable="'assignee.displayName'">{{task.assignee.displayName}}</td>
+                <td data-title="'Due Date'" sortable="'dueDate'">{{task.dueDate}}</td>
+                <td>
+                    <div class="table-actions">
+                <td>
+                   <div class="table-actions">
+                        <a class="btn btn-default" title="View" href="/#!/tasks/{{task._id}}">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                        <a class="btn btn-default" title="Edit" href="/#!/tasks/{{task._id}}/edit">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a class="btn btn-danger" title="Remove" ng-really-message="Are you sure ?" ng-really-click="remove(task)" item="task">
+                  				<span class="glyphicon glyphicon-remove-circle"></span>
+                  			</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>

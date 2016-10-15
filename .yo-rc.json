@@ -1,0 +1,12 @@
+{
+  "generator-ng-fullstack": {
+    "username": "jack.w.j.ke@gmail.com",
+    "appName": "workbench",
+    "stack": "fullstack",
+    "server": "node",
+    "client": "ng2",
+    "transpilerServer": "node",
+    "secure": true,
+    "differentStaticServer": false
+  }
+}
